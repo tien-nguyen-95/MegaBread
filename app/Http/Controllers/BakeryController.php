@@ -18,7 +18,6 @@ class BakeryController extends Controller
             $products = Product::all();
         }
         else{
-            // $slugs = explode("-", str_replace('-', ' ', $type));
             $find_type = ProductType::where('slug', $type)->first();
             $id = $find_type->id;
             $products = Product::where('id_type', $id)->get();
@@ -32,8 +31,8 @@ class BakeryController extends Controller
             $products = Product::all();
         }
         else{
-            $slugs = explode("-", str_replace('-', ' ', $type));
-            $find_type = ProductType::where('name', $slugs)->first();
+
+            $find_type = ProductType::where('slug', $type)->first();
             $id = $find_type->id;
             $products = Product::where('id_type', $id)->where('sale',1)->get();
         }
