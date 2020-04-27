@@ -16,7 +16,7 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code',6)->unique()->nullable();
-            $table->integer('id_customer')->unsigned();
+            $table->integer('id_customer')->unsigned()->nullable();
             $table->foreign('id_customer')->references('id')->on('customers');
             $table->date('date_order')->nullable();
             $table->float('total', 20, 2)->nullable();
@@ -26,7 +26,7 @@ class CreateBillsTable extends Migration
             $table->string('user_updated')->nullable();
             $table->string('user_deleted')->nullable();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->nullable();
         });
     }
 

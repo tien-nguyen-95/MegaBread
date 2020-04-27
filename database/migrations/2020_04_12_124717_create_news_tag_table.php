@@ -15,9 +15,9 @@ class CreateNewsTagTable extends Migration
     {
         Schema::create('news_tag', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_news')->unsigned();
+            $table->integer('id_news')->unsigned()->nullable();
             $table->foreign('id_news')->references('id')->on('news');
-            $table->integer('id_tag')->unsigned();
+            $table->integer('id_tag')->unsigned()->nullable();
             $table->foreign('id_tag')->references('id')->on('tags');
             $table->timestamps();
         });

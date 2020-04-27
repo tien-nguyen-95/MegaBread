@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name')->unique()->nullable();
             $table->integer('id_type')->unsigned()->nullable();
             $table->foreign('id_type')->references('id')->on('product_types');
             $table->mediumText('description')->nullable();
@@ -29,7 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('user_updated')->nullable();
             $table->string('user_deleted')->nullable();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->nullable();
         });
     }
 
