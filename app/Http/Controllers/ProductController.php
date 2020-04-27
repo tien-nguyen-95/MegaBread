@@ -74,9 +74,9 @@ class ProductController extends Controller
                  $image = Str::random(5) . "_" . $name_image;
             }
             $file->move("images/product/", $image);
-            if (!empty($product->image)) {
-                unlink("images/product/" . $product->image);
-            }
+            // if (!empty($product->image)) {
+            //     unlink("images/product/" . $product->image);
+            // }
             $product->image = $image;
         }
         $product->unit_price = request('unit_price');
